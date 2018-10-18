@@ -8,12 +8,11 @@ import insertMultiple, {insertInto} from "./insert_into.js";
 createDatabase();
 insertInto();
 insertMultiple();
-selectFrom();
 
 let app = Express();
 
 app.get('/', (req, res) => {
-	res.send('<b>My</b> first express http server');
+	res.send(selectFrom());
 });
 
 app.get('/welcome', (req, res) => {

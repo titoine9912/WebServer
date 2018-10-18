@@ -18,7 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //simple
 function insertInto() {
 	var db = new _betterSqlite2.default(_config2.default);
-	db.exec("INSERT INTO scores(name, score) VALUES ('Name', 9000);");
+	db.exec("INSERT INTO IF NOT EXISTS scores(name, score) VALUES ('Name', 9000);");
 	db.close();
 }
 

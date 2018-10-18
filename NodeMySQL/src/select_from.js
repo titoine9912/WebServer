@@ -3,8 +3,10 @@ import dbFilePath from "./config.js";
 
 function selectFrom(){
 	let db = new Database(dbFilePath);
-	db.exec("SELECT * FROM scores WHERE name='Antoine'");
+	let statement=db.prepare("SELECT * FROM scores WHERE name=?");
+	let data=statement.all('Antoine');
 	db.close(); 
+	return data;
 }
 
 export {selectFrom as default};
