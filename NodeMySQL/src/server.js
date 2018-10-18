@@ -1,4 +1,5 @@
 import Express from "express";
+import BodyParser from "body-parser";
 import createDatabase from "./create_db.js";
 import selectFrom from "./select_from.js";
 import updateTable from "./update_table.js";
@@ -9,6 +10,7 @@ createDatabase();
 insertInto();
 
 let app = Express();
+let parser = BodyParser();
 
 app.get('/', (req, res) => {
 	res.send(selectFrom());
