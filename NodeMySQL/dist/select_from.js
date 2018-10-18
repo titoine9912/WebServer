@@ -17,8 +17,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function selectFrom() {
 	var db = new _betterSqlite2.default(_config2.default);
-	var statement = db.prepare("SELECT * FROM scores WHERE name=?");
-	var data = statement.all('Antoine');
+	var statement = db.prepare("SELECT * FROM scores");
+	var data = statement.all();
 	db.close();
 	return data;
 }

@@ -2,12 +2,19 @@ import Database from "better-sqlite3";
 import dbFilePath from "./config.js";
 
 //simple
+function insertInto(name, score, nbDeaths) {
+	let db = new Database(dbFilePath);
+	let statement = db.prepare("INSERT INTO scores(name, score, nbDeath) VALUES (?,?,?);");
+	statement.run(name,score,nbDeaths);
+	db.close(); 
+}
+/*
 function insertInto() {
 	let db = new Database(dbFilePath);
 	db.exec("INSERT INTO scores(name, score, nbDeath) VALUES ('Name', 9000,3);");
 	db.close(); 
 }
-
+*/
 //multiple
 function insertMultiple() {
 	let db = new Database(dbFilePath);

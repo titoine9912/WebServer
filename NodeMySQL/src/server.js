@@ -7,21 +7,19 @@ import deleteFrom from "./delete.js";
 import insertMultiple, {insertInto} from "./insert_into.js";
 
 createDatabase();
-insertInto();
+
 
 let app = Express();
-let parser = BodyParser();
+app.use(BodyParser.json());
 
 app.get('/', (req, res) => {
 	res.send(selectFrom());
 });
 
-app.get('/welcome', (req, res) => {
-    res.send('<b>Hello</b> welcome to my http server made with express');
-});
-
-app.use((req, res, next) => {
-    res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
+app.post("/scores", (req, res) => {
+	insertInto(req.body.name, req.body.score, req.body.nbDeaths);
+	
+	res.send(selectFrom());
 });
 
 app.listen(8080, () => {

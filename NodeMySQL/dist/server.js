@@ -4,6 +4,10 @@ var _express = require("express");
 
 var _express2 = _interopRequireDefault(_express);
 
+var _bodyParser = require("body-parser");
+
+var _bodyParser2 = _interopRequireDefault(_bodyParser);
+
 var _create_db = require("./create_db.js");
 
 var _create_db2 = _interopRequireDefault(_create_db);
@@ -27,22 +31,20 @@ var _insert_into2 = _interopRequireDefault(_insert_into);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _create_db2.default)();
-(0, _insert_into.insertInto)();
 
 var app = (0, _express2.default)();
+app.use(_bodyParser2.default.json());
 
 app.get('/', function (req, res) {
-    res.send((0, _select_from2.default)());
+	res.send((0, _select_from2.default)());
 });
 
-app.get('/welcome', function (req, res) {
-    res.send('<b>Hello</b> welcome to my http server made with express');
-});
+app.post("/scores", function (req, res) {
+	(0, _insert_into.insertInto)(req.body.name, req.body.score, req.body.nbDeaths);
 
-app.use(function (req, res, next) {
-    res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
+	res.send((0, _select_from2.default)());
 });
 
 app.listen(8080, function () {
-    console.log('Example app listening on port 8080.');
+	console.log('Example app listening on port 8080.');
 });
