@@ -1,6 +1,5 @@
 import Database from "better-sqlite3";
-
-let dbFilePath = process.env.NODE_ENV == "PROD" ? "/.app/data.db" : "data.db";
+import dbFilePath from "./config.js";
 
 function selectFrom(){
 	let db = new Database(dbFilePath);
@@ -9,23 +8,3 @@ function selectFrom(){
 }
 
 export {selectFrom as default};
-/*
-var mysql = require('mysql');
-
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "nodebd"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  var name='Antoine';
-  var sql='SELECT * FROM score WHERE name=?';
-  con.query(sql,[name], function (err, result) {
-    if (err) throw err;
-    console.log(result);
-  });
-});
-*/

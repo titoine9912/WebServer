@@ -1,6 +1,8 @@
 import Express from "express";
 import createDatabase from "./create_db.js";
 import selectFrom from "./select_from.js";
+import updateTable from "./update_table.js";
+import deleteFrom from "./delete.js";
 
 createDatabase();
 
@@ -19,5 +21,5 @@ app.use(function(req, res, next) {
 });
 
 app.listen(8080, function () {
-    console.log('Example app listening on port 3000.');
+    console.log('Example app listening on port 8080.');
 });
