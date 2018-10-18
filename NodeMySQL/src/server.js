@@ -17,9 +17,9 @@ app.get('/', (req, res) => {
 });
 
 app.post("/scores", (req, res) => {
-	//insertInto(req.body.name, req.body.score, req.body.nbDeaths);
+	insertInto(req.body.name, req.body.score, req.body.nbDeaths);
 	updateTable(req.body.id, req.body.score, req.body.nbDeaths);
-	//deleteFrom(req.body.id);
+	deleteFrom(req.body.id);
 	res.send(selectFrom());
 });
 
