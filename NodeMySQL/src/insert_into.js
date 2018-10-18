@@ -3,7 +3,7 @@ import dbFilePath from "./config.js";
 
 function insertInto(name, score, nbDeaths) {
 	let db = new Database(dbFilePath);
-	let statement = db.prepare("INSERT INTO scores(name, score, nbDeath) VALUES (?,?,?);");
+	let statement = db.prepare("INSERT INTO scores(name, score, nbDeath) VALUES (?, ?, ?);");
 	statement.run(name, score, nbDeaths);
 	db.close(); 
 }
