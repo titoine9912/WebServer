@@ -4,7 +4,7 @@ import createDatabase from "./create_db.js";
 import selectFrom from "./select_from.js";
 import updateTable from "./update_table.js";
 import deleteFrom from "./delete.js";
-import insertMultiple, {insertInto} from "./insert_into.js";
+import insertInto from "./insert_into.js";
 
 createDatabase();
 
@@ -17,8 +17,9 @@ app.get('/', (req, res) => {
 });
 
 app.post("/scores", (req, res) => {
-	insertInto(req.body.name, req.body.score, req.body.nbDeaths);
-	
+	//insertInto(req.body.name, req.body.score, req.body.nbDeaths);
+	updateTable(req.body.id, req.body.score, req.body.nbDeaths);
+	//deleteFrom(req.body.id);
 	res.send(selectFrom());
 });
 

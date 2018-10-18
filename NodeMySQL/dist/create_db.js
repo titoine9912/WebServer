@@ -17,7 +17,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function createDatabase() {
 	var db = new _betterSqlite2.default(_config2.default);
-	db.exec("CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, score INTEGER);");
+	var statement = db.prepare("CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, score INTEGER);");
+	statement.run();
 	db.close();
 }
 

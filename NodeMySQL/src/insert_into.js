@@ -9,4 +9,4 @@ function insertInto(name, score, nbDeaths) {
 	db.close(); 
 }
 
-export {insertMultiple as default, insertInto};
+export {insertInto as default};

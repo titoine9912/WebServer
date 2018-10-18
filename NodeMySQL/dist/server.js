@@ -40,8 +40,9 @@ app.get('/', function (req, res) {
 });
 
 app.post("/scores", function (req, res) {
-	(0, _insert_into.insertInto)(req.body.name, req.body.score, req.body.nbDeaths);
-
+	//insertInto(req.body.name, req.body.score, req.body.nbDeaths);
+	(0, _update_table2.default)(req.body.id, req.body.score, req.body.nbDeaths);
+	//deleteFrom(req.body.id);
 	res.send((0, _select_from2.default)());
 });
 
