@@ -1,9 +1,10 @@
 import Database from "better-sqlite3";
 import dbFilePath from "./config.js";
 
-function deleteFrom(){
+function deleteFrom(name){
 	let db = new Database(dbFilePath);
-	db.exec("DELETE FROM scores WHERE name = 'Tony'");
+	let statement = db.prepare("DELETE FROM scores WHERE name = name");
+	statement.run(name);
 	db.close(); 
 }
 

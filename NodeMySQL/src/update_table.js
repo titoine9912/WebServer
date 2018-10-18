@@ -1,9 +1,10 @@
 import Database from "better-sqlite3";
 import dbFilePath from "./config.js";
 
-function updateTable(){
+function updateTable(name, score, nbDeaths){
 	let db = new Database(dbFilePath);
-	db.exec("UPDATE scores SET name = 'Tony' WHERE name = 'Antoine'");
+	let statement = db.prepare("UPDATE scores SET score = ?, nbDeaths = ? WHERE name = name");
+	statement.run(name, score, nbDeaths)
 	db.close();
 }
 
