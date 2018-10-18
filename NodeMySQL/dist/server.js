@@ -20,14 +20,21 @@ var _delete = require("./delete.js");
 
 var _delete2 = _interopRequireDefault(_delete);
 
+var _insert_into = require("./insert_into.js");
+
+var _insert_into2 = _interopRequireDefault(_insert_into);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _create_db2.default)();
+(0, _insert_into.insertInto)();
+(0, _insert_into2.default)();
+var select = (0, _select_from2.default)();
 
 var app = (0, _express2.default)();
 
 app.get('/', function (req, res) {
-    res.send('<b>My</b> first express http server');
+    res.send(select);
 });
 
 app.get('/welcome', function (req, res) {

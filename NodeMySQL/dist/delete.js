@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function deleteFrom() {
 	var db = new _betterSqlite2.default(_config2.default);
-	db.exec("DELETE FROM score WHERE name = 'Antoine'");
+	db.exec("DELETE FROM scores WHERE name = 'Tony'");
 	db.close();
 }
 

@@ -3,8 +3,12 @@ import createDatabase from "./create_db.js";
 import selectFrom from "./select_from.js";
 import updateTable from "./update_table.js";
 import deleteFrom from "./delete.js";
+import insertMultiple, {insertInto} from "./insert_into.js";
 
 createDatabase();
+insertInto();
+insertMultiple();
+selectFrom();
 
 let app = Express();
 

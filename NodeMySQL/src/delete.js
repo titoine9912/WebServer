@@ -3,7 +3,7 @@ import dbFilePath from "./config.js";
 
 function deleteFrom(){
 	let db = new Database(dbFilePath);
-	db.exec("DELETE FROM score WHERE name = 'Antoine'");
+	db.exec("DELETE FROM scores WHERE name = 'Tony'");
 	db.close(); 
 }
 

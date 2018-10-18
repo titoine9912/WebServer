@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function updateTable() {
 	var db = new _betterSqlite2.default(_config2.default);
-	db.exec("UPDATE score SET name = 'Tony' WHERE name = 'Antoine'");
+	db.exec("UPDATE scores SET name = 'Tony' WHERE name = 'Antoine'");
 	db.close();
 }
 

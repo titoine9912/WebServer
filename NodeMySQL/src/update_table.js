@@ -3,7 +3,7 @@ import dbFilePath from "./config.js";
 
 function updateTable(){
 	let db = new Database(dbFilePath);
-	db.exec("UPDATE score SET name = 'Tony' WHERE name = 'Antoine'");
+	db.exec("UPDATE scores SET name = 'Tony' WHERE name = 'Antoine'");
 	db.close();
 }
 
