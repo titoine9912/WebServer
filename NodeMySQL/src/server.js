@@ -1,4 +1,5 @@
 import Express from "express";
+import BodyParser from "body-parser";
 import createDatabase from "./create_db.js";
 import selectFrom from "./select_from.js";
 import updateTable from "./update_table.js";
@@ -11,6 +12,7 @@ insertMultiple();
 selectFrom();
 
 let app = Express();
+let parser = BodyParser();
 
 app.get('/', (req, res) => {
 	res.send('<b>My</b> first express http server');
