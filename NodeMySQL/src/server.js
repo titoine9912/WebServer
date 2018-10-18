@@ -7,7 +7,6 @@ import insertMultiple, {insertInto} from "./insert_into.js";
 
 createDatabase();
 insertInto();
-insertMultiple();
 
 let app = Express();
 

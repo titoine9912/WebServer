@@ -4,7 +4,7 @@ import dbFilePath from "./config.js";
 //simple
 function insertInto() {
 	let db = new Database(dbFilePath);
-	db.exec("INSERT INTO scores(name, score) VALUES ('Name', 9000);");
+	db.exec("INSERT INTO scores(name, score, nbDeath) VALUES ('Name', 9000,3);");
 	db.close(); 
 }
 
@@ -18,7 +18,7 @@ function insertMultiple() {
 		['Hannah', 2000],
 		['Michael', 3000]
 	];
-	db.exec("INSERT INTO scores (name, score) VALUES ('Antoine',3000);");
+	db.exec("INSERT INTO scores (name, score, nbDeath) VALUES ('Antoine',3000,2);");
 	db.close(); 
 }
 

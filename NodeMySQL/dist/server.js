@@ -28,7 +28,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _create_db2.default)();
 (0, _insert_into.insertInto)();
-(0, _insert_into2.default)();
 
 var app = (0, _express2.default)();
 

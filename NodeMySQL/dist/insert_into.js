@@ -18,7 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //simple
 function insertInto() {
 	var db = new _betterSqlite2.default(_config2.default);
-	db.exec("INSERT INTO IF NOT EXISTS scores(name, score) VALUES ('Name', 9000);");
+	db.exec("INSERT INTO scores(name, score, nbDeath) VALUES ('Name', 9000,3);");
 	db.close();
 }
 
@@ -26,7 +26,7 @@ function insertInto() {
 function insertMultiple() {
 	var db = new _betterSqlite2.default(_config2.default);
 	var values = [['John', 1000], ['Antoine', 325], ['Amy', 652], ['Hannah', 2000], ['Michael', 3000]];
-	db.exec("INSERT INTO scores (name, score) VALUES ('Antoine',3000);");
+	db.exec("INSERT INTO scores (name, score, nbDeath) VALUES ('Antoine',3000,2);");
 	db.close();
 }
 
