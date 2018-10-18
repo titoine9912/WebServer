@@ -8,7 +8,6 @@ import insertInto from "./insert_into.js";
 
 createDatabase();
 
-
 let app = Express();
 app.use(BodyParser.json());
 
