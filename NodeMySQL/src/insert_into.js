@@ -1,10 +1,10 @@
 import Database from "better-sqlite3";
 import dbFilePath from "./config.js";
 
-function insertScore(idLevel, score, time, nbDeath, idPlayer) {
+function insertScore(idLevel, levelNumber, score, time, nbDeath, idPlayer) {
 	let db = new Database(dbFilePath);
-	let statement = db.prepare("INSERT INTO level(idLevel, score, time, nbDeath, idPlayer) VALUES (?,?,?,?,?);");
-	statement.run(idLevel, score, time, nbDeath, idPlayer);
+	let statement = db.prepare("INSERT INTO scoreLevel(idLevel, levelNumber, score, time, nbDeath, idPlayer) VALUES (?,?,?,?,?);");
+	statement.run(idLevel, levelNumber, score, time, nbDeath, idPlayer);
 	db.close(); 
 }
 
