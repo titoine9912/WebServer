@@ -1,26 +1,32 @@
 import Express from "express";
 import BodyParser from "body-parser";
-import createDatabase from "./create_db.js";
-import selectFrom from "./select_from.js";
-import updateTable from "./update_table.js";
-import deleteFrom from "./delete.js";
-import insertInto from "./insert_into.js";
+import createPlayerTable, {createLevelTable} from "./create_db.js";
+import selectPlayer, {selectBestScore, selectBestTime, selectBestNbDeath} from "./select_from.js";
+import insertPlayer, {insertScore} from "./insert_into.js";
 
-createDatabase();
+createPlayerTable();
+createLevelTable();
 
 
 let app = Express();
 app.use(BodyParser.json());
 
-app.get('/', (req, res) => {
-	res.send(selectFrom());
+app.get('/player', (req, res) => {
+	res.send(selectPlayer());
 });
 
-app.post("/scores", (req, res) => {
-	//insertInto(req.body.name, req.body.score, req.body.nbDeaths);
-	updateTable(req.body.id, req.body.score, req.body.nbDeaths);
-	//deleteFrom(req.body.id);
-	res.send(selectFrom());
+app.get('/level', (req, res) => {
+res.send(selectBestScore(), selectBestTime(), selectBestNbDeath());
+});
+
+app.post("/level", (req, res) => {
+	insertScore(req.body.idLevel, req.body.score, req.body.time, req.body.nbDeath, req.body.idPlayer);
+	res.send(selectBestScore(), selectBestTime(), selectBestNbDeath());
+});
+
+app.post("/player", (req,res)=>{
+	insertPlayer(req.body.name);
+	res.send(selectPlayer());
 });
 
 app.listen(8080, () => {
