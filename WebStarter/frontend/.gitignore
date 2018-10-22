@@ -1,0 +1,6 @@
+# Build
+/build
+/src/**/*.css
+
+# Node
+/node_modules

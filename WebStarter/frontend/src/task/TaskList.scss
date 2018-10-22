@@ -1,0 +1,38 @@
+@import "../theme/_variables.scss";
+
+.task-list {
+  list-style-type : none;
+  padding: 0;
+
+  border: $APP_BORDER_WIDTH solid $APP_BORDER_COLOR_PRIMARY;
+  border-radius: $APP_BORDER_RADIUS;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: $APP_MARGIN;
+
+    &:not(:first-child) {
+      border-top: $APP_BORDER_WIDTH solid $APP_BORDER_COLOR_PRIMARY;
+    }
+
+    &:hover {
+      background-color: $APP_BACKGROUND_COLOR_PRIMARY;
+    }
+
+    > *:not(:last-child) {
+      flex-grow: 1;
+    }
+
+  }
+
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $APP_MARGIN;
+
+    font-style: italic;
+  }
+
+}

@@ -1,0 +1,17 @@
+@import "../theme/_variables.scss";
+
+.task-editor {
+  display: flex;
+  align-items: center;
+
+  padding: $APP_MARGIN;
+
+  border: $APP_BORDER_WIDTH solid $APP_BORDER_COLOR_PRIMARY;
+  border-radius: $APP_BORDER_RADIUS;
+
+  > *:not(:last-child) {
+    flex-grow: 1;
+    margin-right: $APP_MARGIN;
+  }
+
+}

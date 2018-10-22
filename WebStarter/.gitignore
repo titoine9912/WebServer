@@ -1,0 +1,8 @@
+# Build
+/build
+
+# Intellij Idea
+/.idea
+
+# Logs
+yarn-error.log

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: $SERVICE_NAME
+  labels:
+    app: $SERVER_NAME
+spec:
+  selector:
+    app: $SERVER_NAME
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: LoadBalancer

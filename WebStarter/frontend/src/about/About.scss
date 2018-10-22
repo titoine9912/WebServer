@@ -1,0 +1,11 @@
+@import "../theme/_variables.scss";
+
+.about {
+
+  &__license {
+    padding: $APP_MARGIN;
+    border-radius: $APP_BORDER_RADIUS;
+    background-color: $APP_BACKGROUND_COLOR_PRIMARY;
+  }
+
+}

@@ -1,0 +1,40 @@
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: $SERVER_NAME
+spec:
+  selector:
+    matchLabels:
+      app: $SERVER_NAME
+  serviceName: $SERVICE_NAME
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: $SERVER_NAME
+    spec:
+      containers:
+      - name: $SERVER_NAME
+        image: $CI_REGISTRY_IMAGE
+        imagePullPolicy: Always
+        env:
+        - name: COMMIT_HASH
+          value: $CI_COMMIT_SHA
+        ports:
+        - containerPort: 8080
+          name: $SERVICE_NAME
+        volumeMounts:
+        - name: $STORAGE_NAME
+          mountPath: /.app
+      imagePullSecrets:
+      - name: gitlab-secret
+  volumeClaimTemplates:
+  - metadata:
+      name: $STORAGE_NAME
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

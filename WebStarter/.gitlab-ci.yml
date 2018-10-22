@@ -1,0 +1,55 @@
+stages:
+  - build
+  - package
+  - deploy
+
+variables:
+  CI: "true" #Tell Jest to run tests in normal mode, not in watch mode.
+  PROJECT_NAME: "mobile2-192601"
+  CLUSTER_NAME: "dcm-cluster"
+  SERVER_NAME: "dcm-server"
+  SERVICE_NAME: "dcm-service"
+  STORAGE_NAME: "dcm-storage"
+  DOCKER_DRIVER: "overlay"
+
+build-frontend:
+  image: blemelin/node-build
+  stage: build
+  script:
+    - sh .gitlab-build-frontend.sh
+  artifacts:
+    paths:
+      - frontend/build
+    expire_in: 1 week
+  only:
+    - master
+
+build-backend:
+  image: blemelin/node-build
+  stage: build
+  script:
+    - sh .gitlab-build-backend.sh
+  artifacts:
+    paths:
+      - backend/build
+    expire_in: 1 week
+  only:
+    - master
+
+package:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: package
+  script:
+    - sh .gitlab-package.sh
+  only:
+    - master
+
+deploy:
+  image: blemelin/google-cloud-sdk
+  stage: deploy
+  script:
+    - sh .gitlab-deploy.sh
+  only:
+    - master
