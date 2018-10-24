@@ -7,18 +7,17 @@ import insertPlayer, {insertScore} from "./insert_into.js";
 
 export default class Server {
 	constructor() {
-	
 		this.app = Express();
 		this.app.use(BodyParser.json());
 		this.router = Express.Router();
 	
-		let self=this;
+		let self = this;
 	
 		self.router.get("/player", (req, res) => {
 			res.send(selectPlayer());
 		});
 	
-		self.router.post("/player", (req,res) => {
+		self.router.post("/player", (req, res) => {
 			insertPlayer(req.body.name);
 			res.send(selectPlayer());
 		});
@@ -47,19 +46,19 @@ export default class Server {
 		}
 	}
 	
-	address(){
-		return this.currentApp ? this.currentApp.address():null;
+	address() {
+		return this.currentApp ? this.currentApp.address(): null;
 	}
 	
-	listen(port){
-		this.currentApp=this.app.listen(port);
+	listen(port) {
+		this.currentApp = this.app.listen(port);
 		return this;
 	}
 	
-	close(){
-		if(this.currentApp){
+	close() {
+		if (this.currentApp) {
 			this.currentApp.close();
-			this.currentApp=null;
+			this.currentApp = null;
 		}
 	}
 }

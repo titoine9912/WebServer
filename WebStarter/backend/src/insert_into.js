@@ -8,7 +8,7 @@ function insertScore(levelNumber, score, time, nbDeath, idPlayer) {
 	db.close(); 
 }
 
-function insertPlayer(name){
+function insertPlayer(name) {
 	let db = new Database(dbFilePath);
 	let statement = db.prepare("INSERT INTO player(name) VALUES (?);");
 	statement.run(name);

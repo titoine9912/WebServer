@@ -4,23 +4,22 @@ import Server from "./server.js";
 
 chai.use(chaiHttp);
 
+let request = chai.request;
+let currentServer = null;
 
-let request=chai.request;
-let currentServer=null;
-
-beforeEach(()=>{
-	currentServer=new Server();
+beforeEach(() => {
+	currentServer = new Server();
 });
 
-afterEach(()=>{
-	currentServer=null;
+afterEach(() => {
+	currentServer = null;
 });
 
-describe("Database is empty",()=>{
-	it("Database is empty",(done) =>{
+describe("Database is empty", () => {
+	it("Database is empty", (done) => {
 		request(currentServer)
 		.get("/api/player")
-		.end(function (error,response){
+		.end(function (error,response) {
 			console.log(error);
 			expect(error).to.be.null;
 			expect(response).to.have.status(200);
@@ -29,30 +28,30 @@ describe("Database is empty",()=>{
 	});
 });
 
-describe('/POST player/register',()=>{
-	it("Ajouter un joueur",(done) =>{
+describe("/POST player/register", () => {
+	it("Ajouter un joueur", (done) => {
 		request(currentServer)
 		.post("/api/player")
-		.send({name:'Antoine'})
+		.send({ name : "Antoine" })
 		.end(function (error,response){
 			expect(error).to.be.null;
 			expect(response).to.have.status(200);
-			expect(response).be.a('object');
+			expect(response).be.a("object");
 			done();
 		});
 	});
 });
 
-describe('/POST scoreLevel/register',()=>{
-	it("Ajouter un score",(done) =>{
+describe("/POST scoreLevel/register", () => {
+	it("Ajouter un score", (done) => {
 		request(currentServer)
 		.post("/api/scoreLevel")
-		.send({levelNumber:1, score:420, time:20, nbDeath:3, idPlayer:1})
-		.end(function (error,response){
+		.send({ levelNumber : 1, score : 420, time : 20, nbDeath : 3, idPlayer : 1 })
+		.end(function (error,response) {
 			console.log(error);
 			expect(error).to.be.null;
 			expect(response).to.have.status(200);
-			expect(response).be.a('object');
+			expect(response).be.a("object");
 			done();
 		});
 	});
